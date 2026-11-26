@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" font-family="Outfit, Segoe UI, Arial, sans-serif" role="img" aria-label="Cadeia de digitalização do áudio">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1b1b22"/></marker>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#f1efe9"/></linearGradient>
+  </defs>
+  <g stroke="#1b1b22" stroke-width="2">
+    <!-- microfone -->
+    <rect x="20" y="60" width="130" height="110" rx="16" fill="url(#g)"/>
+    <rect x="66" y="78" width="38" height="52" rx="19" fill="#6b6964"/>
+    <path d="M58 112q0 30 27 30t27-30M85 142v14" fill="none"/>
+    <!-- pré-amp -->
+    <rect x="200" y="60" width="130" height="110" rx="16" fill="url(#g)"/>
+    <path d="M240 90v50l50-25z" fill="#9a9893"/>
+    <!-- filtro -->
+    <rect x="380" y="60" width="130" height="110" rx="16" fill="url(#g)"/>
+    <path d="M400 95h50q25 0 35 45" fill="none" stroke="#1a1a1a" stroke-width="4"/>
+    <!-- ADC -->
+    <rect x="560" y="60" width="130" height="110" rx="16" fill="#1b1b22"/>
+    <path d="M580 135h12v-20h12v-25h12v15h12v20h12v-30h12v40h12" fill="none" stroke="#eceae6" stroke-width="3"/>
+    <!-- arquivo -->
+    <path d="M745 60h90l25 25v85h-115z" fill="url(#g)"/>
+    <path d="M835 60v25h25" fill="none"/>
+    <path d="M150 115h48M330 115h48M510 115h48M690 115h53" marker-end="url(#ar)"/>
+  </g>
+  <g font-size="17" font-weight="700" fill="#1b1b22" text-anchor="middle">
+    <text x="85" y="40">Microfone</text><text x="265" y="40">Pré-amplificador</text>
+    <text x="445" y="40">Filtro anti-aliasing</text><text x="625" y="40">Conversor A/D</text><text x="802" y="40">Arquivo</text>
+  </g>
+  <g font-size="14" fill="#55555f" text-anchor="middle">
+    <text x="85" y="200">pressão → tensão</text><text x="265" y="200">ganho do sinal</text>
+    <text x="445" y="200">corta acima de fs/2</text><text x="625" y="200">amostra + quantiza</text><text x="802" y="200">WAV · FLAC · MP3</text>
+  </g>
+  <text x="802" y="125" font-size="15" font-weight="700" text-anchor="middle" fill="#6b6964">0101</text>
+</svg>

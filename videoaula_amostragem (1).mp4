@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DggSounds – Áudio Digital</title>
+<link rel="icon" href="svg/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<!-- Ícones vetoriais (SVG) desenhados pelo grupo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z" fill="currentColor"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor"/></symbol>
+  <symbol id="i-nota" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="6" cy="18" r="3" fill="currentColor"/><circle cx="17" cy="16" r="3" fill="currentColor"/></symbol>
+  <symbol id="i-voz" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="m1" viewBox="0 0 52 52"><rect width="52" height="52" rx="14" fill="#1a1a1a"/><path d="M6 26c5-14 9-14 13 0s8 14 13 0 9-14 14 0" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></symbol>
+  <symbol id="m2" viewBox="0 0 52 52"><rect width="52" height="52" rx="14" fill="#1a1a1a"/><path d="M8 36h7v-12h7v-10h7v14h7v-6h8" fill="none" stroke="#eceae6" stroke-width="4" stroke-linejoin="round"/></symbol>
+  <symbol id="m3" viewBox="0 0 52 52"><rect width="52" height="52" rx="14" fill="#1b1b22"/><rect x="12" y="10" width="28" height="32" rx="5" fill="#eceae6"/><path d="M17 17h18M17 25h5M24 25h5M31 25h4M17 32h5M24 32h5M31 32h4" stroke="#1b1b22" stroke-width="3"/></symbol>
+  <symbol id="m4" viewBox="0 0 52 52"><rect width="52" height="52" rx="14" fill="#1a1a1a"/><path d="M14 8h17l8 8v28H14z" fill="#eceae6" stroke="#eceae6" stroke-width="3"/><path d="M20 30l6 6 6-6M26 20v16" stroke="#1a1a1a" stroke-width="3.5" fill="none"/></symbol>
+  <symbol id="m5" viewBox="0 0 52 52"><rect width="52" height="52" rx="14" fill="#1a1a1a"/><path d="M12 14l28 24M12 38l28-24" stroke="#eceae6" stroke-width="3.5"/><circle cx="12" cy="14" r="5" fill="#eceae6"/><circle cx="12" cy="38" r="5" fill="#eceae6"/></symbol>
+  <symbol id="m6" viewBox="0 0 52 52"><rect width="52" height="52" rx="14" fill="#1a1a1a"/><rect x="9" y="14" width="34" height="24" rx="3" fill="#fff"/><path d="M15 14v15M21 14v15M27 14v15M33 14v15M39 14v15" stroke="#1b1b22" stroke-width="3"/></symbol>
+  <symbol id="m7" viewBox="0 0 52 52"><rect width="52" height="52" rx="14" fill="#eceae6"/><text x="26" y="36" text-anchor="middle" font-family="Outfit,Arial" font-weight="800" font-size="28" fill="#1a1a1a">?</text></symbol>
+</svg>
+
+<header class="top">
+  <a class="logo" href="#inicio" aria-label="DggSounds – início">
+    <svg class="" viewBox="40 30 915 230" role="img" aria-label="DggSounds"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- D (triângulo / play) -->
+    <path d="M60 45 L180 133 L60 240 Z"/>
+    <!-- G -->
+    <path d="M292 65 H236 L218 84 V180 L240 197 H286 L312 162 V145 H268 V166"/>
+    <path d="M292 65 L310 84"/>
+    <!-- G -->
+    <path d="M414 65 H358 L340 84 V180 L362 197 H408 L434 162 V145 H390 V166"/>
+    <path d="M414 65 L432 84"/>
+    <!-- S -->
+    <path d="M540 68 H455 V130 H540 V195 H455"/>
+    <!-- O -->
+    <path d="M570 70 H645 V195 H570 Z"/>
+    <!-- U -->
+    <path d="M668 70 V195 H740 V70"/>
+    <!-- N + D -->
+    <path d="M765 195 V70 L800 195 V70 L860 135 L800 195"/>
+    <!-- S -->
+    <path d="M935 70 H872 V130 H935 V195 H872"/>
+  </g></svg>
+  </a>
+  <nav class="nav" aria-label="Módulos">
+    <a href="#inicio">Início</a><a href="#som">1 · Som</a><a href="#digital">2 · Digitalização</a><a href="#tamanho">3 · Tamanho</a>
+    <a href="#formatos">4 · Formatos</a><a href="#edicao">5 · Edição</a><a href="#midi">6 · MIDI</a><a href="#quiz">Quiz</a><a href="#sobre">Sobre</a>
+  </nav>
+  <button class="btn alt" id="btnTrilha" aria-pressed="false" title="Trilha MIDI composta pelo grupo"><svg><use href="#i-nota"/></svg>Trilha</button>
+</header>
+
+<main>
+<!-- ============ INÍCIO ============ -->
+<section class="tela" id="t-inicio">
+  <div class="band hero"><div class="wrap grid">
+    <div>
+      <span class="kicker">Sistema Multimídia</span>
+      <h1><span class="sr">DggSounds</span><svg class="logo-hero" viewBox="40 30 915 230" aria-hidden="true" aria-label="DggSounds"><g fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- D (triângulo / play) -->
+    <path d="M60 45 L180 133 L60 240 Z"/>
+    <!-- G -->
+    <path d="M292 65 H236 L218 84 V180 L240 197 H286 L312 162 V145 H268 V166"/>
+    <path d="M292 65 L310 84"/>
+    <!-- G -->
+    <path d="M414 65 H358 L340 84 V180 L362 197 H408 L434 162 V145 H390 V166"/>
+    <path d="M414 65 L432 84"/>
+    <!-- S -->
+    <path d="M540 68 H455 V130 H540 V195 H455"/>
+    <!-- O -->
+    <path d="M570 70 H645 V195 H570 Z"/>
+    <!-- U -->
+    <path d="M668 70 V195 H740 V70"/>
+    <!-- N + D -->
+    <path d="M765 195 V70 L800 195 V70 L860 135 L800 195"/>
+    <!-- S -->
+    <path d="M935 70 H872 V130 H935 V195 H872"/>
+  </g></svg><span style="font-weight:600;color:#cfccc6">Explorando o Áudio Digital</span></h1>
+      <p>Um software educacional para aprender os conceitos do áudio digital de maneira interativa e dinâmica. Conteúdos, exemplos, imagens e sons: explore os módulos livremente, no seu ritmo, e depois teste seus conhecimentos.</p>
+      <div class="row" style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn y" href="#som">Começar pelo som</a>
+        <a class="btn alt" style="border-color:#fff;color:#fff" href="#quiz">Ir direto ao quiz</a>
+      </div>
+    </div>
+    <div class="fig" aria-label="Animação: onda sonora sendo amostrada"><canvas id="cvHero"></canvas></div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <h2>Escolha um módulo</h2>
+    <p style="color:var(--mut)">Os módulos que você já visitou ficam marcados.</p>
+    <div class="cards" id="cards">
+      <a class="card" href="#som"><svg class="ic"><use href="#m1"/></svg><b>1 · O que é o som</b><span>Onda, frequência, amplitude e timbre — com gerador de tons.</span></a>
+      <a class="card" href="#digital"><svg class="ic"><use href="#m2"/></svg><b>2 · Do analógico ao digital</b><span>Amostragem, Nyquist, aliasing e quantização ao vivo.</span></a>
+      <a class="card" href="#tamanho"><svg class="ic"><use href="#m3"/></svg><b>3 · Tamanho e qualidade</b><span>Calculadora de taxa de bits e tamanho de arquivo.</span></a>
+      <a class="card" href="#formatos"><svg class="ic"><use href="#m4"/></svg><b>4 · Formatos e compressão</b><span>WAV, FLAC e MP3: ouça e compare os tamanhos reais.</span></a>
+      <a class="card" href="#edicao"><svg class="ic"><use href="#m5"/></svg><b>5 · Editando áudio</b><span>Antes e depois, espectrogramas e vídeo-aula.</span></a>
+      <a class="card" href="#midi"><svg class="ic"><use href="#m6"/></svg><b>6 · Áudio digital × MIDI</b><span>Por que 1 KB de MIDI vira 1,7 MB de WAV.</span></a>
+      <a class="card quiz" href="#quiz"><svg class="ic"><use href="#m7"/></svg><b>Testando os conhecimentos</b><span>Quiz: 5 perguntas sorteadas de um banco de 20, múltipla escolha e V ou F.</span></a>
+    </div>
+  </div></div>
+  <div class="band dk"><div class="wrap">
+    <h2 style="color:#fff">O que você vai aprender</h2>
+    <ul class="lista">
+      <li>Funcionamento do som e suas características.</li>
+      <li>Amostragem, frequência e quantização.</li>
+      <li>Teorema de Nyquist.</li>
+      <li>Taxa de bits e tamanho dos arquivos.</li>
+      <li>Diferenças entre WAV, FLAC e MP3.</li>
+      <li>Diferenças entre áudio digital e MIDI.</li>
+    </ul>
+  </div></div>
+</section>
+
+<!-- ============ 1. SOM ============ -->
+<section class="tela" id="t-som" data-titulo="O que é o som">
+  <div class="band mhead dk"><div class="wrap">
+    <div class="num">Módulo 1</div><h1>O que é o som</h1>
+    <p class="intro">Som é uma onda mecânica: uma vibração que empurra e puxa as moléculas do ar, criando regiões de compressão e rarefação que chegam até o nosso ouvido. Toda onda sonora pode ser descrita por três características: frequência, amplitude e timbre.</p>
+    <div class="row"><button class="btn alt narrar"><svg><use href="#i-voz"/></svg>Ouvir narração</button></div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <div class="demo">
+      <h3>Gerador de tons</h3>
+      <div class="fig"><canvas id="cvSom"></canvas></div>
+      <div class="ctrls">
+        <label>Frequência <output id="oFreq">440 Hz</output><input type="range" id="rFreq" min="0" max="1000" value="566"></label>
+        <label>Amplitude <output id="oAmp">50%</output><input type="range" id="rAmp" min="0" max="100" value="50"></label>
+        <label>Timbre (forma de onda)<select id="sForma"><option value="sine">Senoidal (pura)</option><option value="triangle">Triangular</option><option value="square">Quadrada</option><option value="sawtooth">Dente de serra</option></select></label>
+        <button class="btn" id="bTom" aria-pressed="false"><svg><use href="#i-play"/></svg>Tocar tom</button>
+      </div>
+      <p style="margin:14px 0 0;color:var(--mut)" id="oLambda"></p>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>As três características</h3>
+        <p><b>Frequência</b> é quantas vezes a onda se repete por segundo, medida em hertz (Hz). Ela define se o som é grave ou agudo. O ouvido humano percebe, em média, de 20 Hz a 20.000 Hz.</p>
+        <p><b>Amplitude</b> é a “altura” da onda e está ligada à intensidade (volume). Em áudio, costuma ser medida em decibéis (dB), uma escala logarítmica.</p>
+        <p><b>Timbre</b> é o que diferencia um violão de um piano tocando a mesma nota. Ele vem da combinação de harmônicos — repare como a onda quadrada soa mais “áspera” que a senoidal.</p>
+        <p class="ver">Veja também: <a href="#digital">como essa onda vira números</a>.</p>
+      </div>
+      <figure><img src="svg/onda_anatomia.svg" alt="Diagrama vetorial: amplitude e período de uma onda"><figcaption>Imagem vetorial (SVG): anatomia de uma onda.</figcaption></figure>
+    </div>
+    <div class="pager"><a class="btn alt" href="#inicio">← Menu</a><a class="btn" href="#digital">Módulo 2 →</a></div>
+  </div></div>
+</section>
+
+<!-- ============ 2. DIGITAL ============ -->
+<section class="tela" id="t-digital" data-titulo="Do analógico ao digital">
+  <div class="band mhead dk"><div class="wrap">
+    <div class="num">Módulo 2</div><h1>Do analógico ao digital</h1>
+    <p class="intro">O som no ar é contínuo, mas o computador só guarda números. Para digitalizar, o conversor analógico-digital faz duas coisas: amostragem, que mede o sinal em intervalos regulares, e quantização, que arredonda cada medida para um número inteiro com uma quantidade fixa de bits.</p>
+    <div class="row"><button class="btn alt narrar"><svg><use href="#i-voz"/></svg>Ouvir narração</button></div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <div class="demo">
+      <h3>Laboratório de amostragem e quantização</h3>
+      <div class="fig"><canvas id="cvDig"></canvas></div>
+      <div class="ctrls">
+        <label>Frequência do sinal <output id="oSf">1.000 Hz</output><input type="range" id="rSf" min="100" max="8000" step="50" value="1000"></label>
+        <label>Taxa de amostragem <output id="oFs">8.000 Hz</output><input type="range" id="rFs" min="1000" max="44100" step="100" value="8000"></label>
+        <label>Profundidade <output id="oBits">4 bits</output><input type="range" id="rBits" min="1" max="16" value="4"></label>
+        <button class="btn" id="bDig" aria-pressed="false"><svg><use href="#i-play"/></svg>Ouvir resultado</button>
+      </div>
+      <p class="note" id="oNyq" style="margin:16px 0 0"></p>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>Teorema de Nyquist</h3>
+        <p>Para representar um sinal sem perdas, a taxa de amostragem precisa ser <b>maior que o dobro</b> da maior frequência presente. Como ouvimos até cerca de 20 kHz, o CD usa 44.100 Hz.</p>
+        <p>Se a regra é desrespeitada, frequências altas “se disfarçam” de frequências baixas que não existiam: é o <b>aliasing</b>. Por isso, antes do conversor existe um filtro passa-baixas, o filtro anti-aliasing.</p>
+        <h3>Quantização</h3>
+        <p>Com <i>n</i> bits temos 2<sup>n</sup> níveis. 16 bits dão 65.536 níveis e cerca de 96 dB de faixa dinâmica (≈ 6 dB por bit). Poucos bits geram o ruído de quantização, um chiado granulado.</p>
+      </div>
+      <div>
+        <h3>Ouça a mesma gravação em várias qualidades</h3>
+        <div class="players" id="plQual"></div>
+      </div>
+    </div>
+    <figure><img src="svg/cadeia_adc.svg" alt="Diagrama vetorial: microfone, pré-amplificador, filtro anti-aliasing, conversor A/D e arquivo"><figcaption>Imagem vetorial (SVG): a cadeia de digitalização.</figcaption></figure>
+    <p class="ver">Veja também: <a href="#tamanho">quanto espaço essas escolhas ocupam</a> · <a href="#edicao">a vídeo-aula sobre amostragem</a>.</p>
+    <div class="pager"><a class="btn alt" href="#som">← Módulo 1</a><a class="btn" href="#tamanho">Módulo 3 →</a></div>
+  </div></div>
+</section>
+
+<!-- ============ 3. TAMANHO ============ -->
+<section class="tela" id="t-tamanho" data-titulo="Tamanho e qualidade">
+  <div class="band mhead dk"><div class="wrap">
+    <div class="num">Módulo 3</div><h1>Tamanho e qualidade</h1>
+    <p class="intro">No áudio sem compressão, o tamanho do arquivo depende só de quatro números: taxa de amostragem, bits por amostra, número de canais e duração. Multiplique tudo e você tem o total de bits; divida por oito e tem os bytes.</p>
+    <div class="row"><button class="btn alt narrar"><svg><use href="#i-voz"/></svg>Ouvir narração</button></div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <div class="demo">
+      <h3>Calculadora de áudio PCM</h3>
+      <div class="res">
+        <div><small>Taxa de bits</small><span class="big" id="oKbps">1.411 kbps</span></div>
+        <div><small>Tamanho do arquivo</small><span class="big" style="color:var(--blue)" id="oMB">10,1 MB</span></div>
+      </div>
+      <div class="ctrls">
+        <label>Predefinição<select id="sPre"><option value="44100,16,2">CD (44,1 kHz · 16 bits · estéreo)</option><option value="8000,8,1">Telefone (8 kHz · 8 bits · mono)</option><option value="22050,16,1">Rádio AM / voz (22 kHz · 16 bits · mono)</option><option value="48000,24,2">Vídeo / DVD (48 kHz · 24 bits · estéreo)</option><option value="96000,24,2">Estúdio (96 kHz · 24 bits · estéreo)</option><option value="custom">Personalizado</option></select></label>
+        <label>Taxa de amostragem (Hz)<input type="number" id="nFs" value="44100" min="1000" max="384000"></label>
+        <label>Bits por amostra<select id="nBits"><option>8</option><option selected>16</option><option>24</option><option>32</option></select></label>
+        <label>Canais<select id="nCh"><option value="1">1 (mono)</option><option value="2" selected>2 (estéreo)</option><option value="6">6 (5.1)</option></select></label>
+        <label>Duração (segundos)<input type="number" id="nDur" value="60" min="1" max="36000"></label>
+      </div>
+      <p style="margin:16px 0 0;color:var(--mut)" id="oConta"></p>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>A fórmula</h3>
+        <p><code>taxa de bits = amostragem × bits × canais</code></p>
+        <p><code>tamanho (bytes) = taxa de bits × duração ÷ 8</code></p>
+        <p>Exemplo: 1 minuto de CD = 44.100 × 16 × 2 × 60 ÷ 8 = 10.584.000 bytes ≈ 10,1 MB. Uma música de 4 minutos passa de 40 MB — é por isso que a <a href="#formatos">compressão</a> foi tão importante para a música digital.</p>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th>Uso</th><th>Configuração</th><th class="n">kbps</th></tr></thead>
+        <tbody><tr><td>Telefone</td><td>8 kHz · 8 bits · mono</td><td class="n">64</td></tr>
+        <tr><td>CD</td><td>44,1 kHz · 16 bits · estéreo</td><td class="n">1.411</td></tr>
+        <tr><td>Estúdio</td><td>96 kHz · 24 bits · estéreo</td><td class="n">4.608</td></tr>
+        <tr><td>MP3 bom</td><td>comprimido com perdas</td><td class="n">192</td></tr></tbody>
+      </table></div>
+    </div>
+    <div class="pager"><a class="btn alt" href="#digital">← Módulo 2</a><a class="btn" href="#formatos">Módulo 4 →</a></div>
+  </div></div>
+</section>
+
+<!-- ============ 4. FORMATOS ============ -->
+<section class="tela" id="t-formatos" data-titulo="Formatos e compressão">
+  <div class="band mhead dk"><div class="wrap">
+    <div class="num">Módulo 4</div><h1>Formatos e compressão</h1>
+    <p class="intro">Compressão sem perdas, como o FLAC, diminui o arquivo e devolve exatamente os mesmos bits na reprodução. Compressão com perdas, como o MP3, descarta o que o ouvido provavelmente não perceberia, usando um modelo psicoacústico, e por isso chega a arquivos muito menores.</p>
+    <div class="row"><button class="btn alt narrar"><svg><use href="#i-voz"/></svg>Ouvir narração</button></div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <div class="demo">
+      <h3>A mesma gravação, quatro arquivos</h3>
+      <p style="color:var(--mut)">Tamanhos reais dos arquivos deste protótipo. A barra mostra o tamanho em relação ao WAV.</p>
+      <div class="players" id="plFmt"></div>
+    </div>
+    <div class="scroll"><table class="stack">
+      <thead><tr><th>Formato</th><th>Tipo</th><th>Como funciona</th><th>Quando usar</th></tr></thead>
+      <tbody>
+        <tr><td><b>WAV</b></td><td>Sem compressão (PCM)</td><td>Guarda as amostras como estão, com um cabeçalho que diz taxa, bits e canais.</td><td>Gravação e edição.</td></tr>
+        <tr><td><b>FLAC</b></td><td>Compressão sem perdas</td><td>Prevê cada amostra a partir das anteriores e guarda só o erro da previsão.</td><td>Arquivamento, ouvintes exigentes.</td></tr>
+        <tr><td><b>MP3</b></td><td>Compressão com perdas</td><td>Divide o som em bandas de frequência e descarta o que é mascarado por sons mais fortes.</td><td>Distribuição, streaming, celular.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Experimente: compare o MP3 de 32 kbps com o WAV prestando atenção nos agudos. O som fica “abafado” e com um brilho metálico — são os artefatos de compressão.</p>
+    <p class="ver">Veja também: <a href="#tamanho">a calculadora de tamanho</a> · <a href="#midi">MIDI, que nem guarda som</a>.</p>
+    <div class="pager"><a class="btn alt" href="#tamanho">← Módulo 3</a><a class="btn" href="#edicao">Módulo 5 →</a></div>
+  </div></div>
+</section>
+
+<!-- ============ 5. EDIÇÃO ============ -->
+<section class="tela" id="t-edicao" data-titulo="Editando áudio">
+  <div class="band mhead dk"><div class="wrap">
+    <div class="num">Módulo 5</div><h1>Editando áudio</h1>
+    <p class="intro">Toda gravação real chega com problemas: volume baixo, chiado, zumbido da rede elétrica e estalos. Neste módulo você ouve uma gravação antes e depois do tratamento e vê cada etapa da edição.</p>
+    <div class="row"><button class="btn alt narrar"><svg><use href="#i-voz"/></svg>Ouvir narração</button></div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <div class="demo">
+      <h3>Antes × depois</h3>
+      <p style="color:var(--mut)">Aperte play e alterne entre as versões sem perder a posição.</p>
+      <div class="ab"><button class="btn" id="bAB" aria-pressed="false"><svg><use href="#i-play"/></svg>Tocar</button>
+        <button class="btn alt" id="bAntes" aria-pressed="true">Antes</button><button class="btn alt" id="bDepois" aria-pressed="false">Depois</button></div>
+      <figure style="margin:0"><img id="imgAB" src="img/onda_antes.png" alt="Forma de onda da gravação"><figcaption>Imagem matricial (PNG) gerada da gravação.</figcaption></figure>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>O que foi feito, passo a passo</h3>
+        <ol class="passos">
+          <li><b>Remoção de cliques</b> — picos muito acima da média local foram substituídos pela mediana dos vizinhos.</li>
+          <li><b>Filtro passa-altas de 100 Hz + filtro notch em 180 Hz</b> — eliminam o zumbido de 60 Hz da rede elétrica e seu harmônico.</li>
+          <li><b>Redução de ruído</b> — um “perfil de ruído” foi medido no silêncio inicial e subtraído do espectro inteiro (subtração espectral).</li>
+          <li><b>Normalização</b> — o pico foi elevado a −1 dBFS, aproveitando toda a faixa dinâmica.</li>
+          <li><b>Fade-out</b> — meio segundo de saída suave no final.</li>
+        </ol>
+        <p>No Audacity, os mesmos passos são: <i>Efeito → Remoção de cliques</i>, <i>Filtro passa-altas</i>, <i>Redução de ruído</i> (obter perfil + aplicar), <i>Normalizar</i> e <i>Fade out</i>.</p>
+      </div>
+      <figure><video controls preload="metadata" poster="img/video_poster.jpg" src="video/videoaula_amostragem.mp4"></video><figcaption>Vídeo-aula (MP4): como o som vira número, com antes e depois.</figcaption></figure>
+    </div>
+    <h3>Equipamentos de captura</h3>
+    <p>Fotografias (imagens matriciais) dos equipamentos que o grupo usou para gravar e editar as mídias.</p>
+    <div class="fotos">
+      <figure><img src="img/foto_microfone.jpg" alt="Foto do microfone USB/headset"><figcaption>Microfone USB / headset</figcaption></figure>
+      <figure><img src="img/foto_celular.jpg" alt="Foto do smartphone usado na gravação"><figcaption>Smartphone (gravação de áudio e vídeo)</figcaption></figure>
+      <figure><img src="img/foto_computador.jpg" alt="Foto do computador com o Audacity aberto"><figcaption>Computador com o Audacity</figcaption></figure>
+    </div>
+    <h3>Espectrogramas</h3>
+    <p>O espectrograma mostra o tempo na horizontal, a frequência na vertical e a intensidade na cor. Repare no fundo alaranjado (chiado) e na linha no rodapé (zumbido de 60 Hz) que desaparecem.</p>
+    <figure><img src="img/espectro_antes.png" alt="Espectrograma antes da edição"></figure>
+    <figure><img src="img/espectro_depois.png" alt="Espectrograma depois da edição"></figure>
+    <div class="pager"><a class="btn alt" href="#formatos">← Módulo 4</a><a class="btn" href="#midi">Módulo 6 →</a></div>
+  </div></div>
+</section>
+
+<!-- ============ 6. MIDI ============ -->
+<section class="tela" id="t-midi" data-titulo="Áudio digital e MIDI">
+  <div class="band mhead dk"><div class="wrap">
+    <div class="num">Módulo 6</div><h1>Áudio digital × MIDI</h1>
+    <p class="intro">Um arquivo de áudio guarda a onda sonora. Um arquivo MIDI não guarda som nenhum: guarda instruções, como uma partitura — qual nota tocar, quando, com que força e em qual instrumento. Quem gera o som é o sintetizador do aparelho que o reproduz.</p>
+    <div class="row"><button class="btn alt narrar"><svg><use href="#i-voz"/></svg>Ouvir narração</button></div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <div class="demo">
+      <h3>A trilha do DggSounds em “rolo de piano”</h3>
+      <div class="fig"><canvas id="cvMidi"></canvas></div>
+      <div class="ctrls">
+        <button class="btn" id="bMidi" aria-pressed="false"><svg><use href="#i-play"/></svg>Tocar MIDI</button>
+        <p style="margin:0;color:var(--mut)" id="oMidiInfo"></p>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>A mesma música, dois arquivos</h3>
+        <div class="players" id="plMidi"></div>
+        <p>O MIDI acima foi composto pelo grupo e é tocado por um sintetizador escrito em JavaScript (Web Audio API). O WAV é a mesma música já renderizada em amostras.</p>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th></th><th>Áudio digital</th><th>MIDI</th></tr></thead>
+        <tbody>
+          <tr><td>Guarda</td><td>Amostras da onda</td><td>Eventos (nota, tempo, intensidade)</td></tr>
+          <tr><td>Tamanho</td><td>Grande</td><td>Minúsculo</td></tr>
+          <tr><td>Voz e sons reais</td><td>Sim</td><td>Não</td></tr>
+          <tr><td>Editar nota a nota</td><td>Difícil</td><td>Fácil</td></tr>
+          <tr><td>Som igual em todo lugar</td><td>Sim</td><td>Depende do sintetizador</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="pager"><a class="btn alt" href="#edicao">← Módulo 5</a><a class="btn y" href="#quiz">Fazer o quiz →</a></div>
+  </div></div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="tela" id="t-quiz" data-titulo="Quiz">
+  <div class="band"><div class="wrap qbox" id="quizBox"></div></div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="tela" id="t-sobre">
+  <div class="band"><div class="wrap">
+    <h1>Sobre o protótipo</h1>
+    <p>DggSounds é um protótipo de software educacional para a disciplina Sistemas Multimídia, tema <b>Áudio digital para Sistemas Multimídia</b>. A navegação é não-linear: o menu e os links “veja também” permitem visitar os módulos em qualquer ordem.</p>
+    <h2>Equipe</h2>
+    <div class="membros">
+      <div><b>Guilherme Rodrigues Lopes da Silva</b><small>Matrícula 01711888</small></div>
+      <div><b>Iago de Oliveira Almeida</b><small>Matrícula 01673357</small></div>
+      <div><b>José Roberto Reis Lins de Andrade</b><small>Matrícula 01676432</small></div>
+      <div><b>Pedro Moreno Vieira</b><small>Matrícula 01702265</small></div>
+    </div>
+    <h2>As seis mídias</h2>
+    <div class="scroll"><table class="stack">
+      <thead><tr><th>Mídia</th><th>Onde aparece</th><th>Arquivos</th></tr></thead>
+      <tbody>
+        <tr><td>Imagens matriciais</td><td>Módulo 5 (fotos dos equipamentos, ondas, espectrogramas, pôster do vídeo)</td><td><code>img/*.jpg</code>, <code>img/*.png</code></td></tr>
+        <tr><td>Imagens vetoriais</td><td>Logotipo, ícones, diagramas dos módulos 1 e 2</td><td><code>svg/*.svg</code> e ícones no HTML</td></tr>
+        <tr><td>Áudio digitalizado</td><td>Narrações, módulos 2, 4, 5 e 6, efeitos sonoros do quiz</td><td><code>audio/*.wav</code>, <code>.flac</code>, <code>.mp3</code></td></tr>
+        <tr><td>Música MIDI</td><td>Botão “Trilha” e módulo 6</td><td><code>midi/trilha_menu.mid</code></td></tr>
+        <tr><td>Vídeo</td><td>Módulo 5</td><td><code>video/videoaula_amostragem.mp4</code></td></tr>
+        <tr><td>Animação</td><td>Abertura, módulos 1, 2 e 6, transições</td><td><code>js/app.js</code> (canvas), <code>css/estilo.css</code></td></tr>
+      </tbody>
+    </table></div>
+    <h2>Ferramentas</h2>
+    <ul class="lista">
+      <li><b>HTML5:</b> estrutura do sistema.</li>
+      <li><b>CSS3:</b> aparência e animações.</li>
+      <li><b>JavaScript:</b> interatividade e funcionalidades.</li>
+      <li><b>Web Audio API:</b> recursos relacionados ao áudio.</li>
+      <li><b>Visual Studio Code:</b> ambiente de desenvolvimento.</li>
+      <li><b>Audacity:</b> gravação e edição de áudio.</li>
+      <li><b>MuseScore ou LMMS:</b> criação de música MIDI.</li>
+      <li><b>GIMP e Inkscape:</b> produção de imagens.</li>
+      <li><b>Shotcut ou DaVinci Resolve:</b> edição de vídeos.</li>
+      <li><b>Python e FFmpeg:</b> geração das amostras de teste, conversão para FLAC/MP3 e montagem da vídeo-aula.</li>
+    </ul>
+  </div></div>
+</section>
+</main>
+
+<footer><div class="wrap">DggSounds · Sistemas Multimídia · Protótipo da Unidade 2 · Todas as mídias produzidas pelo grupo.</div></footer>
+
+<script src="js/dados.js"></script>
+<script src="js/midi.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

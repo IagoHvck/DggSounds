@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" font-family="Outfit, Segoe UI, Arial, sans-serif" role="img" aria-label="Anatomia de uma onda sonora">
+  <defs><marker id="a2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1b1b22"/></marker></defs>
+  <line x1="30" y1="130" x2="620" y2="130" stroke="#b9b6ae" stroke-dasharray="4 5"/>
+  <path d="M30 130 C 80 30, 130 30, 160 130 S 240 230, 290 130 S 370 30, 420 130 S 500 230, 550 130" fill="none" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M95 130V58" stroke="#1b1b22" stroke-width="2" marker-start="url(#a2)" marker-end="url(#a2)"/>
+  <text x="104" y="100" font-size="16" font-weight="700" fill="#1b1b22">amplitude</text>
+  <text x="104" y="118" font-size="13" fill="#55555f">(volume)</text>
+  <path d="M160 245H420" stroke="#6b6964" stroke-width="2" marker-start="url(#a2)" marker-end="url(#a2)"/>
+  <path d="M160 222v30M420 222v30" stroke="#6b6964" stroke-width="2"/>
+  <text x="290" y="236" font-size="16" font-weight="700" fill="#6b6964" text-anchor="middle">período (T) — frequência f = 1/T</text>
+  <text x="560" y="122" font-size="13" fill="#55555f">tempo →</text>
+</svg>
