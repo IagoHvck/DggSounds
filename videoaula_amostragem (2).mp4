@@ -52,7 +52,7 @@
     <a href="#inicio">Início</a><a href="#som">1 · Som</a><a href="#digital">2 · Digitalização</a><a href="#tamanho">3 · Tamanho</a>
     <a href="#formatos">4 · Formatos</a><a href="#edicao">5 · Edição</a><a href="#midi">6 · MIDI</a><a href="#quiz">Quiz</a><a href="#sobre">Sobre</a>
   </nav>
-  <button class="btn alt" id="btnTrilha" aria-pressed="false" title="Trilha MIDI composta pelo grupo"><svg><use href="#i-nota"/></svg>Trilha</button>
+  <button class="btn alt" id="btnTrilha" aria-pressed="false" title="Bateria MIDI do grupo (LMMS)"><svg><use href="#i-nota"/></svg>Trilha</button>
 </header>
 
 <main>
@@ -315,6 +315,16 @@
         <p style="margin:0;color:var(--mut)" id="oMidiInfo"></p>
       </div>
     </div>
+    <div class="demo">
+      <h3>A bateria do grupo, feita no LMMS</h3>
+      <p style="color:var(--mut)">O arquivo <code>bateria.mid</code> tem 5 faixas de bateria, e todas usam a mesma nota (Lá, 69). No LMMS, o som de cada faixa vem do sample carregado nela. Toque com o kit de bateria e depois como piano: as notas são as mesmas, só o instrumento muda.</p>
+      <div class="fig"><canvas id="cvBat"></canvas></div>
+      <div class="ctrls">
+        <button class="btn" id="bBat" aria-pressed="false"><svg><use href="#i-play"/></svg>Tocar bateria</button>
+        <button class="btn alt" id="bBatPiano" aria-pressed="false"><svg><use href="#i-play"/></svg>Tocar como piano</button>
+        <p style="margin:0;color:var(--mut)" id="oBatInfo"></p>
+      </div>
+    </div>
     <div class="cols">
       <div>
         <h3>A mesma música, dois arquivos</h3>
@@ -360,7 +370,7 @@
         <tr><td>Imagens matriciais</td><td>Módulo 5 (fotos dos equipamentos, ondas, espectrogramas, pôster do vídeo)</td><td><code>img/*.jpg</code>, <code>img/*.png</code></td></tr>
         <tr><td>Imagens vetoriais</td><td>Logotipo, ícones, diagramas dos módulos 1 e 2</td><td><code>svg/*.svg</code> e ícones no HTML</td></tr>
         <tr><td>Áudio digitalizado</td><td>Narrações, módulos 2, 4, 5 e 6, efeitos sonoros do quiz</td><td><code>audio/*.wav</code>, <code>.flac</code>, <code>.mp3</code></td></tr>
-        <tr><td>Música MIDI</td><td>Botão “Trilha” e módulo 6</td><td><code>midi/trilha_menu.mid</code></td></tr>
+        <tr><td>Música MIDI</td><td>Botão “Trilha” (bateria do grupo) e módulo 6</td><td><code>midi/bateria.mid</code>, <code>midi/trilha_menu.mid</code></td></tr>
         <tr><td>Vídeo</td><td>Módulo 5</td><td><code>video/videoaula_amostragem.mp4</code></td></tr>
         <tr><td>Animação</td><td>Abertura, módulos 1, 2 e 6, transições</td><td><code>js/app.js</code> (canvas), <code>css/estilo.css</code></td></tr>
       </tbody>

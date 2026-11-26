@@ -250,6 +250,9 @@ sizes["trilha_menu.mid"] = len(mid)
 with open(f"{OUT}/js/dados.js", "w") as fh:
     fh.write("// gerado por tools/gen_audio.py\n")
     fh.write("window.DGG_MIDI_B64 = '" + base64.b64encode(mid).decode() + "';\n")
+    bat = open(f"{OUT}/midi/bateria.mid", "rb").read()  # composta pelo grupo no LMMS
+    sizes["bateria.mid"] = len(bat)
+    fh.write("window.DGG_BATERIA_B64 = '" + base64.b64encode(bat).decode() + "';\n")
     fh.write("window.DGG_TAMANHOS = " + json.dumps(sizes, indent=1) + ";\n")
 np.save("/home/claude/tools/_clean.npy", clean)
 np.save("/home/claude/tools/_dirty.npy", dirty)
